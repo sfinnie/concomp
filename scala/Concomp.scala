@@ -7,6 +7,7 @@ import scala.concurrent.{Await, Future}
 import scala.language.postfixOps
 
 object Concomp {
+
   class FileInfo(nameC: String, sizeC: Long) {
     var name: String = nameC;
     var size: Long = sizeC;
@@ -21,7 +22,7 @@ object Concomp {
     val futures = new ListBuffer[Future[FileInfo]]
 
     // Start futures to get file sizes
-    args foreach (arg => {
+    args.foreach(arg => {
       futures += getFileSize(arg)
     })
 
@@ -48,6 +49,7 @@ object Concomp {
   def getBiggestAndEvens(futures: ListBuffer[Future[FileInfo]]): Result = {
     var biggest = new FileInfo("", 0)
     var evens = new ListBuffer[String]
+
     Future.sequence(futures).foreach(list => {
       list.foreach(fileInfo => {
         if (fileInfo.size > biggest.size) {
@@ -59,6 +61,7 @@ object Concomp {
         }
       })
     })
+
     // Wait 60 seconds max for each future before to return the result
     futures.foreach(f => Await.result(f, 60 seconds))
     new Result(biggest, evens)
