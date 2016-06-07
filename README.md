@@ -13,7 +13,7 @@ Is best described by example:
     
     The files are the same size.
 
-That's it. Simple.  A command line program that:
+That's it. Simple.  A program that:
 
 * runs from the command line
 * accepts two or more parameters, where each is the name of a file
