@@ -10,9 +10,9 @@ var stats2 = fs.statSync(fname2)
 size2=stats2["size"]
 
 if(size1 > size2) {
-	console.log("The first file is bigger")
+	console.log(fname1 + " is bigger")
 } else if (size2 > size1) {
-	console.log("The second file is bigger")
+	console.log(fname2 + " is bigger")
 } else {
 	console.log("The files are the same size")
 }
