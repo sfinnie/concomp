@@ -1,4 +1,4 @@
-#ConCcomp
+#ConComp
 Example implementations of concurrent file size comparison in various languages.  This repo is somewhat inspired by [todoMVC](http://todomvc.com/).  It's useful to see how different languages approach a problem that's simple enough to understand, yet complex enough to get a feel for the language features and philosophy.
 
 #The Problem
