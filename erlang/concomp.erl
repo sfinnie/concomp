@@ -1,7 +1,7 @@
--module(cmp).
--export([cmp/2]).
+-module(concomp).
+-export([concomp/2]).
 
-cmp(Fname1, Fname2) ->
+concomp(Fname1, Fname2) ->
     Sizes=pfile_size([Fname1, Fname2]),
     Size1 = proplists:get_value(Fname1, Sizes),
     Size2 = proplists:get_value(Fname2, Sizes),
