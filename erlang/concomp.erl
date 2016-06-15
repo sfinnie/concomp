@@ -8,9 +8,9 @@ concomp(Fname1, Fname2) ->
     
     if 
         Size1 > Size2 ->
-            io:format("The first file is bigger~n");
+            io:format("~p is bigger~n", [Fname1]);
         Size2 > Size1 ->
-            io:format("The second file is bigger~n");
+            io:format("~p is bigger~n", [Fname2]);
         true ->
             io:format("The files are the same size~n")
     end.
