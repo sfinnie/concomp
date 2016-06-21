@@ -1,4 +1,4 @@
-#Node implementation of filecomp
+#Node implementation of ConComp
 
 There are actually 3 implementations here:
 
