@@ -12,6 +12,6 @@ There are actually 3 implementations here:
 2. clone this repo
 3. Run from command line as e.g. `node concompSync.js file1 file2 file3`.
 
-Substitute `cmpAsync` / `concompPromise.js` for `concompSync` in above as appropriate.
+Substitute `concompAsync` / `concompPromise.js` for `concompSync` in above as appropriate.
 
 
