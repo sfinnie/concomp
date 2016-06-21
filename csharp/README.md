@@ -11,7 +11,7 @@
         
 4. Run the program: 
 
-        ~/projects/concomp/csharp$ dotnet .\bin\debug\netcoreapp1.0\csharp.dll file1.txt file2.txt file3.txt
+        ~/projects/concomp/csharp$ dotnet ./bin/debug/netcoreapp1.0/concomp.dll file1.txt file2.txt file3.txt
 
 
 
