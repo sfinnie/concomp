@@ -10,8 +10,8 @@ There are actually 3 implementations here:
 
 1. Install [node](https://nodejs.org/en/) if you haven't already.
 2. clone this repo
-3. Run from command line as e.g. `node cmpSync.js file1 file2 file3`.
+3. Run from command line as e.g. `node concompSync.js file1 file2 file3`.
 
-Substitute `cmpAsync` / `cmpPromise.js` for `cmpSync` in above as appropriate.
+Substitute `cmpAsync` / `concompPromise.js` for `concompSync` in above as appropriate.
 
 
