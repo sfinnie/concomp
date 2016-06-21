@@ -7,7 +7,7 @@
 3. Restore the dependencies and build the solution: 
 
         ~/projects/concomp/csharp$ dotnet restore
-        ~/projects/concomp/csharp$ dotnet 
+        ~/projects/concomp/csharp$ dotnet build
         
 4. Run the program: 
 
