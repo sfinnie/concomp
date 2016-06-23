@@ -2,33 +2,40 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ConComp
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var fname1 = args[0];
-            var fname2 = args[1];
-            var task1 = Task<long>.Factory.StartNew(() => new FileInfo(fname1).Length);
-            var task2 = Task<long>.Factory.StartNew(() => new FileInfo(fname2).Length);
+            var tasks = new Dictionary<string, Task<long>>();
 
-            Task.WaitAll(task1, task2);
-
-            if (task1.Result > task2.Result)
+            foreach (var arg in args)
             {
-                Console.WriteLine($"{fname1} is bigger");
+                var task = Task<long>.Factory.StartNew(() => new FileInfo(arg).Length);
+                tasks.Add(arg, task);
             }
-            else if (task2.Result > task1.Result)
+
+            Task.WaitAll(tasks.Values.Cast<Task>().ToArray());
+
+            var maxFileSize = tasks.Max(t => t.Value.Result);
+            var biggests = tasks.Where(t => t.Value.Result == maxFileSize).ToList();
+
+            if (biggests.Count == tasks.Count)
             {
-                Console.WriteLine($"{fname2} is bigger");
+                Console.WriteLine("All files are even");
+            }
+            else if (biggests.Count > 1)
+            {
+                var all = string.Join(", ", biggests.Select(b => b.Key));
+                Console.WriteLine($"{all} are the biggest");
             }
             else
             {
-                Console.WriteLine("The files are the same size");
+                var biggest = biggests.Single();
+                Console.WriteLine($"{biggest.Key} is the biggest");
             }
         }
     }
