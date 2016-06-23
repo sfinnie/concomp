@@ -1,8 +1,10 @@
 {
   "name": "concomp",
   "version": "1.0.0-*",
+  "authors": ["Keith Latto", "Gary McGill", "Scott Finnie"],
   "buildOptions": {
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "compile": "**/*.cs"
   },
   "dependencies": {
     "Microsoft.NETCore.App": {
