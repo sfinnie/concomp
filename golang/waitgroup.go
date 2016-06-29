@@ -7,14 +7,10 @@ import (
 	"sync"
 )
 
-var fileSizes map[string]int64
-
 func main() {
 	argsWithoutProg := os.Args[1:]
-	fileSizes = make(map[string]int64)
 
-	populateFileSizes(argsWithoutProg)
-
+	fileSizes := getFileSizes(argsWithoutProg)
 	biggest, evens := getBiggestAndEvens(fileSizes)
 
 	if len(evens) == len(argsWithoutProg) {
@@ -26,22 +22,28 @@ func main() {
 	}
 }
 
-func populateFileSizes(fileNames []string) {
+func getFileSizes(fileNames []string) map[string]int64 {
+	fileSizes := make(map[string]int64)
 	var waitGroup sync.WaitGroup
 	var mutex sync.Mutex
 
 	for _, fileName := range fileNames {
+		// Start a go routine for each file
 		waitGroup.Add(1)
 		go func(fileName string) {
 			defer waitGroup.Done()
 			fileSize := getFileSize(fileName)
+
+			// Mutex to avoid concurrent writes to map
 			mutex.Lock()
 			fileSizes[fileName] = fileSize
 			mutex.Unlock()
 		}(fileName)
 	}
 
+	// Wait for all Go routines to finish
 	waitGroup.Wait()
+	return fileSizes
 }
 
 func getFileSize(filename string) int64 {
